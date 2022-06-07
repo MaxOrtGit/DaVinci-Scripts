@@ -1,0 +1,66 @@
+{
+	Tools = ordered() {
+		BottomFadeMask = MacroOperator {
+			Inputs = ordered() {
+				Input1 = InstanceInput {
+					SourceOp = "BottomFade",
+					Source = "SoftEdge",
+					Default = 0.15,
+				},
+				Input2 = InstanceInput {
+					SourceOp = "BottomFade",
+					Source = "BorderWidth",
+					Default = 0.4,
+				},
+				Input3 = InstanceInput {
+					SourceOp = "BottomFade",
+					Source = "Center",
+				},
+				Input4 = InstanceInput {
+					SourceOp = "BottomFade",
+					Source = "Width",
+					Default = 1,
+				},
+				Input5 = InstanceInput {
+					SourceOp = "BottomFade",
+					Source = "Height",
+					Default = 0.5,
+				},
+			},
+			Outputs = {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "BottomFade",
+					Source = "Mask",
+				}
+			},
+			ViewInfo = GroupInfo { Pos = { 0, 0 } },
+			Tools = ordered() {
+				BottomFade = RectangleMask {
+					CtrlWZoom = false,
+					NameSet = true,
+					CustomData = {
+						Path = {
+							Map = {
+								["Setting:"] = "G:\\To Backup\\template\\"
+							}
+						},
+					},
+					Inputs = {
+						Filter = Input { Value = FuID { "Fast Gaussian" }, },
+						SoftEdge = Input { Value = 0.15, },
+						BorderWidth = Input { Value = 0.4, },
+						MaskWidth = Input { Value = 1920, },
+						MaskHeight = Input { Value = 1080, },
+						PixelAspect = Input { Value = { 1, 1 }, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						ClippingMode = Input { Value = FuID { "None" }, },
+						Center = Input { Value = { 0.5, 0.75 }, },
+						Width = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 2310, 115.5 } },
+				}
+			},
+		}
+	},
+	ActiveTool = "BottomFadeMask"
+}
