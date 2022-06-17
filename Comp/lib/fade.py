@@ -1,6 +1,19 @@
 
 import time
 
+#print(comp.OriginalSaver.GetAttrs("INPS_DataType"))
+
+#print(comp.OriginalSaver.GetAttrs("OUTS_DataType"))
+
+#x = comp.OriginalSaver.GetInputList().values()
+#for inp in x:
+#  print(inp.GetAttrs()["INPS_Name"])
+
+#for inp in x:
+#  if inp.GetAttrs()["INPS_Name"] == "Filename":
+#    print(inp.GetAttrs()["INPS_ID"])
+#    break
+
 #type 1 = right, 2 = left, 3 = up, 4 = down
 def pan(type, resolve, comp):
   projectManager = resolve.GetProjectManager()

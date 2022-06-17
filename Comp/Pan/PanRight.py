@@ -1,4 +1,3 @@
-import time
 from lib import fade
 
 if __name__ == "__main__":
