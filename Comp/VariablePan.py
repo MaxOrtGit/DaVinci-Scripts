@@ -37,7 +37,7 @@ if __name__ == "__main__":
   otool = comp.ActiveTool
   
   poly.change_points(comp, edge_polygon)
-  time.sleep(0.5)
+  time.sleep(0.25)
   tool = comp.ActiveTool
   tool.SetAttrs({"TOOLS_Name": f"Edge Mask {n}"})
   tool.SoftEdge = 0.1
@@ -46,10 +46,10 @@ if __name__ == "__main__":
   
   if back_polygon != []:
     poly.change_points(comp, back_polygon)
-    time.sleep(0.5)
+    time.sleep(0.25)
     tool = comp.ActiveTool
     tool.SetAttrs({"TOOLS_Name": f"Back Mask {n}"})
-    time.sleep(0.5)
+    time.sleep(0.25)
   comp.SetActiveTool(otool)
   
   for clip in clips:
@@ -57,7 +57,7 @@ if __name__ == "__main__":
       
     print(toolName)
     comp.Execute('comp:Paste(bmd.readfile(comp:MapPath("Macros:/Fade.setting")))')
-    time.sleep(0.5)
+    time.sleep(1.5)
     tool = comp.ActiveTool
     tool.SetAttrs({"TOOLS_Name": toolName})
     for j, t in comp.ActiveTool.GetChildrenList().items():
@@ -78,7 +78,7 @@ if __name__ == "__main__":
       edge_polygon, back_polygon = poly.get_diff_points(x, y, s)
 
       poly.change_points(comp, edge_polygon)
-      time.sleep(0.5)
+      time.sleep(0.25)
       tool = comp.ActiveTool
       tool.SetAttrs({"TOOLS_Name": f"Edge Mask {n}"})
       tool.SoftEdge = 0.1
@@ -87,9 +87,9 @@ if __name__ == "__main__":
       
       if back_polygon != []:
         poly.change_points(comp, back_polygon)
-        time.sleep(0.5)
+        time.sleep(0.25)
         tool = comp.ActiveTool
         tool.SetAttrs({"TOOLS_Name": f"Back Mask {n}"})
-        time.sleep(0.5)
+        time.sleep(0.25)
       comp.SetActiveTool(otool)
     

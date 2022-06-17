@@ -64,7 +64,6 @@ def get_diff_points(x, y, s):
   except:
     diff_points = np.dstack(diff.boundary[0].coords.xy).tolist()
     
-  print(diff_points, len(diff_points))
   
   if len(diff_points) == 1:
     all_diff_points = diff_points[0][:-1]
@@ -82,7 +81,6 @@ def get_diff_points(x, y, s):
   except:
     odiff_points = np.dstack(odiff.boundary[0].coords.xy).tolist()
   
-  print(odiff_points, len(odiff_points))
   if len(odiff_points) == 1:
     all_odiff_points = odiff_points[0][:-1]
   elif len(odiff_points) == 2:
