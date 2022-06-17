@@ -2,11 +2,10 @@
 from lib import poly
 import time
 
-#if __name__ == "__main__":
-#  points = [[-1, -1], [-1, 1], [-0.5, 0.5], [0.5, 0.5], [0.5, -0.5], [-0.5, -0.5], [-0.5, 0.5], [-1,1], [1, 1], [1, -1]]
-#  poly.change_points(comp, points)
-#  print("done")
 
+# change theres variables if the masks and images arent connecting properly
+image_wait = 1.5 #default 1.5
+mask_wait = 0.25 #default 0.25
   
 if __name__ == "__main__":
   projectManager = resolve.GetProjectManager()
@@ -37,7 +36,7 @@ if __name__ == "__main__":
   otool = comp.ActiveTool
   
   poly.change_points(comp, edge_polygon)
-  time.sleep(0.25)
+  time.sleep(mask_wait)
   tool = comp.ActiveTool
   tool.SetAttrs({"TOOLS_Name": f"Edge Mask {n}"})
   tool.SoftEdge = 0.1
@@ -46,10 +45,10 @@ if __name__ == "__main__":
   
   if back_polygon != []:
     poly.change_points(comp, back_polygon)
-    time.sleep(0.25)
+    time.sleep(mask_wait)
     tool = comp.ActiveTool
     tool.SetAttrs({"TOOLS_Name": f"Back Mask {n}"})
-    time.sleep(0.25)
+    time.sleep(mask_wait)
   comp.SetActiveTool(otool)
   
   for clip in clips:
@@ -57,7 +56,7 @@ if __name__ == "__main__":
       
     print(toolName)
     comp.Execute('comp:Paste(bmd.readfile(comp:MapPath("Macros:/Fade.setting")))')
-    time.sleep(1.5)
+    time.sleep(image_wait)
     tool = comp.ActiveTool
     tool.SetAttrs({"TOOLS_Name": toolName})
     for j, t in comp.ActiveTool.GetChildrenList().items():
@@ -78,7 +77,7 @@ if __name__ == "__main__":
       edge_polygon, back_polygon = poly.get_diff_points(x, y, s)
 
       poly.change_points(comp, edge_polygon)
-      time.sleep(0.25)
+      time.sleep(mask_wait)
       tool = comp.ActiveTool
       tool.SetAttrs({"TOOLS_Name": f"Edge Mask {n}"})
       tool.SoftEdge = 0.1
@@ -87,9 +86,9 @@ if __name__ == "__main__":
       
       if back_polygon != []:
         poly.change_points(comp, back_polygon)
-        time.sleep(0.25)
+        time.sleep(mask_wait)
         tool = comp.ActiveTool
         tool.SetAttrs({"TOOLS_Name": f"Back Mask {n}"})
-        time.sleep(0.25)
+        time.sleep(mask_wait)
       comp.SetActiveTool(otool)
     
