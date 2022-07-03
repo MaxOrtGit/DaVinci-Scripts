@@ -24,7 +24,7 @@ def change_points(comp, points):
     {str}
   }}
 
-  maskTool.Tools[polyName].KeyFrames[ct].Value['Closed'] = true
+  -- maskTool.Tools[polyName].KeyFrames[ct].Value['Closed'] = true
   maskTool.Tools[polyName].KeyFrames[ct].Value.Points = NewPoints
 
   mask:Delete()

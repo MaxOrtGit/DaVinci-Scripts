@@ -4,8 +4,8 @@ import time
 
 
 # change theres variables if the masks and images arent connecting properly
-image_wait = 1.5 #default 1.5
-mask_wait = 0.25 #default 0.25
+image_wait = 0 #default 0
+mask_wait = 0.5 #default 0.5
   
 if __name__ == "__main__":
   projectManager = resolve.GetProjectManager()
@@ -22,7 +22,7 @@ if __name__ == "__main__":
       break
 
   clips = convert_folder.GetClipList()
-  clips.sort(key=lambda x: x.GetName().split("-")[0])
+  clips.sort(key=lambda x: int(x.GetName().split("-")[0].split(".")[0]))
   
   c1 = clips[0]
   
@@ -55,7 +55,8 @@ if __name__ == "__main__":
     toolName = f"Image {n}"
       
     print(toolName)
-    comp.Execute('comp:Paste(bmd.readfile(comp:MapPath("Macros:/Fade.setting")))')
+    #comp.Execute('comp:Paste(bmd.readfile(comp:MapPath("Macros:/Fade.setting")))')
+    tool = comp.DoAction("AddSetting", {"filename" : comp.MapPath("Macros:/Fade.setting")})
     time.sleep(image_wait)
     tool = comp.ActiveTool
     tool.SetAttrs({"TOOLS_Name": toolName})
